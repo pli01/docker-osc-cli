@@ -1,0 +1,25 @@
+version: '3.5'
+services:
+  ocs-cli:
+    image: docker-osc-cli:latest
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        http_proxy: ${http_proxy}
+        https_proxy: ${http_proxy}
+        no_proxy: ${no_proxy}
+    networks:
+      - osc-network
+    environment:
+      http_proxy: ${http_proxy}
+      https_proxy: ${http_proxy}
+      no_proxy: ${no_proxy}
+#    volumes:
+#      - ./config.json:/root/.osc_sdk/config.json
+networks:
+  osc-network:
+    driver: bridge
+    driver_opts:
+      com.docker.network.driver.mtu: 1450
+
