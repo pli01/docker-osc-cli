@@ -1,6 +1,6 @@
 version: '3.5'
 services:
-  ocs-cli:
+  osc-cli:
     image: docker-osc-cli:latest
     build:
       context: .
